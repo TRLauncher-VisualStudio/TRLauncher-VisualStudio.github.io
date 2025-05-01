@@ -1,46 +1,107 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TRLauncher</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <header class="hero">
-        <div class="container">
-            <h1>TRLauncher</h1>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#features">Özellikler</a></li>
-                    <li><a href="#download">İndir</a></li>
-                    <li><a href="#contact">İletişim</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-    
-    <main class="container">
-        <section id="features" class="section">
-            <h2>Özellikler</h2>
-            <p>Bu launcher, Minecraft oyununu kolayca başlatmanızı sağlar. Kullanıcı dostu arayüzü ile oyun deneyiminizi geliştirin.</p>
-        </section>
-        
-        <section id="download" class="section">
-            <h2>İndir</h2>
-            <p>Launcher'ı indirmek için aşağıdaki butona tıklayın:</p>
-            <a href="#" class="download-button">İndir</a>
-        </section>
-        
-        <section id="contact" class="section">
-            <h2>İletişim</h2>
-            <p>Herhangi bir sorunuz varsa, lütfen bizimle iletişime geçin.</p>
-        </section>
-    </main>
-    
-    <footer class="footer">
-        <p>&copy; 2025 TRLauncher. Tüm hakları saklıdır.</p>
-    </footer>
-</body>
-</html>
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.hero {
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    color: white;
+    text-align: center;
+    padding: 4rem 1rem;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.hero .tagline {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: #ffdd57;
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.cta-button:hover {
+    background: #ffc107;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.section {
+    margin: 3rem 0;
+    text-align: center;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.feature-item {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.feature-item h3 {
+    margin-top: 0;
+    color: #4facfe;
+}
+
+.download-button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: #4facfe;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.download-button:hover {
+    background: #00c6ff;
+}
+
+.contact-button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: #ffdd57;
+    color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.contact-button:hover {
+    background: #ffc107;
+}
+
+.footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
