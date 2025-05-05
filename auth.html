@@ -3,79 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TRLauncher - GitHub Authentication</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 50px;
-            background-color: #f5f5f5;
-            color: #333;
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        .spinner {
-            border: 4px solid rgba(0, 0, 0, 0.1);
-            border-radius: 50%;
-            border-top: 4px solid #3498db;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h2>GitHub Authentication</h2>
-        <p>Processing your login request...</p>
-        <div class="spinner"></div>
-        <p id="status"></p>
-    </div>
-
+    <title>TRLauncher - GitHub Doğrulaması</title>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const statusElement = document.getElementById('status');
-            
-            // URL'deki 'code' parametresini yakala
+        // Sayfa yüklendiğinde çalışacak
+        window.onload = function() {
+            // URL'deki "code" parametresini yakala
             const urlParams = new URLSearchParams(window.location.search);
             const authCode = urlParams.get('code');
             const error = urlParams.get('error');
 
             if (error) {
-                statusElement.textContent = `Error: ${error} - ${urlParams.get('error_description') || 'Unknown error'}`;
+                document.body.innerHTML = "<h1>Hata: Giriş reddedildi.</h1>";
                 return;
             }
 
             if (authCode) {
-                statusElement.textContent = "Login successful! Returning to launcher...";
-                
-                // Launcher'a yetki kodunu gönder
+                // Ana uygulamaya mesaj gönder
                 if (window.opener) {
-                    window.opener.postMessage({
-                        type: 'github-auth',
-                        code: authCode
-                    }, '*'); // '*' tüm origin'lere mesaj gönderir (güvenlik için spesifik bir origin belirtin)
-                    
-                    // 1 saniye sonra pencereyi kapat
-                    setTimeout(() => window.close(), 1000);
-                } else {
-                    statusElement.textContent = "Error: Unable to communicate with launcher.";
+                    window.opener.postMessage({ type: 'github-auth', code: authCode }, '*');
                 }
+                // Kullanıcıya bilgi ver
+                document.body.innerHTML = "<h1>Giriş başarılı! Pencere kapanıyor...</h1>";
+                setTimeout(() => window.close(), 2000); // 2 saniye sonra pencereyi kapat
             } else {
-                statusElement.textContent = "Error: Authorization code not found.";
+                document.body.innerHTML = "<h1>Hata: Yetki kodu alınamadı.</h1>";
             }
-        });
+        };
     </script>
+</head>
+<body>
+    <p>Yükleniyor...</p>
 </body>
 </html>
